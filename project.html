@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>training</title>
+    <style>
+      #dhikrDiv {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        text-align: center;
+        font-size: 0.7cm;
+        margin: 2px;
+        margin-bottom: 12cm;
+      }
+
+      #decreaseBtn {
+        font-size: 13px;
+      }
+      #countLabel {
+        display: block;
+        text-align: center;
+        font-size: 2cm;
+      }
+      .buttons {
+        display: block;
+        text-align: center;
+      }
+      #everything {
+        display: block;
+        padding: 5cm;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        height: 150vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(https://rb.gy/uxaopr);
+        background-size: cover;
+        color: rgb(212, 205, 205);
+        font-family: Arial, sans-serif;
+        background-color: #767dd7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="everything">
+      <label id="countLabel">0</label><br />
+      <div class="buttons">
+        <button id="increaseBtn">increase</button>
+        <button id="resetBtn">reset</button>
+      </div>
+    </div>
+    <div id="dhikrDiv">
+      <label>الاذكار</label><br />
+      <input type="text" id="DHIKR" /><br />
+      <button type="submit" id="mySubmit">enter 1,2 or 3</button>
+      <p id="resultElement"></p>
+    </div>
+  </body>
+
+  <script>
+    const increaseBtn = document.getElementById("increaseBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const countLabel = document.getElementById("countLabel");
+    let count = 0;
+
+    increaseBtn.onclick = function () {
+      count++;
+      countLabel.textContent = count;
+      if (count == 33) count = 0;
+    };
+    resetBtn.onclick = function () {
+      count = 0;
+      countLabel.textContent = count;
+    };
+    let dhikr;
+    const DHIKR = document.getElementById("DHIKR");
+    const mySubmit = document.getElementById("mySubmit");
+    const resultElement = document.getElementById("resultElement");
+
+    mySubmit.onclick = function () {
+      dhikr = DHIKR.value;
+      dhikr = parseInt(DHIKR.value);
+      if (dhikr == 1) {
+        resultElement.textContent = "الحمد لله ";
+      } else if (dhikr == 2) {
+        resultElement.textContent = "الله اكبر";
+      }
+      if (dhikr == 3) {
+        resultElement.textContent = "لا حول ولا قوة الا بالله";
+      }
+    };
+  </script>
+</html>
